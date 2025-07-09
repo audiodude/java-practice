@@ -35,6 +35,8 @@ public class GuessingGame {
 
             // TODO: Tell the user how many guesses afterwards.
             // TODO: Allow for a summary command.
+            // TODO: Limit the number of guesses before "game over"
+                // TODO: Make the game get progressively "harder", with a bigger range of numbers.
         }
 
     }

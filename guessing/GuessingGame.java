@@ -29,15 +29,16 @@ public class GuessingGame {
                 System.out.println("Sorry, my number is lower");
             } else {
                 // The guess wasn't higher or lower, so it's correct.
-                System.out.println("You guessed it! The number was 50");
+                System.out.println("You guessed it! The number was " + secretNumber);
                 break;
             }
 
             // TODO: Tell the user how many guesses afterwards.
             // TODO: Allow for a summary command.
             // TODO: Limit the number of guesses before "game over"
-                // TODO: Make the game get progressively "harder", with a bigger range of numbers.
+            // TODO: Make the game get progressively "harder", with a bigger range of
+            // numbers.
         }
-
+        scanner.close();
     }
 }

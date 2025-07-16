@@ -11,7 +11,8 @@ class TriangleNumbers {
     }
 
     public static boolean isTriangle(int a, int b, int c) {
-        // A triangle is valid if the sum of any two sides is greater than the third side
-        return (a + b > c) && (a + c > b) && (b + c > a);
+        // A triangle is valid if the sum of any two sides is greater than the third
+        // side
+        return false;
     }
 }

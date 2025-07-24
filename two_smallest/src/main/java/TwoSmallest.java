@@ -1,16 +1,19 @@
-
 class TwoSmallest {
-
-    public static void main(String[] args) {
-        assert sumTwoSmallestNumbers(new long[] { 1, 2, 3, 4, 5 }) == 3;
-        assert sumTwoSmallestNumbers(new long[] { 5, 6, 2, 1, 4 }) == 3;
-        assert sumTwoSmallestNumbers(new long[] { 7, 15, 12, 10, 6 }) == 16;
-    }
-
     public static long sumTwoSmallestNumbers(long[] numbers) {
-        // Return the sum of the two smallest numbers in the given array.
-        // TODO: What if the array is null?
-        // TODO: What if there aren't enough numbers in the array?
-        return 0;
+        if (numbers == null || numbers.length < 2) {
+            throw new IllegalArgumentException("Array must not be null and contain at least 2 numbers");
+        }
+        long min1 = Long.MAX_VALUE;
+        long min2 = Long.MAX_VALUE;
+
+        for (long num : numbers) {
+            if (num < min1) {
+                min2 = min1;
+                min1 = num;
+            } else if (num < min2) {
+                min2 = num;
+            }
+        }
+        return min1 + min2;
     }
 }

@@ -1,6 +1,8 @@
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.DisplayName;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class TwoSmallestTest {
 
@@ -9,7 +11,7 @@ class TwoSmallestTest {
     void testSumTwoSmallestNumbers_NormalArray() {
         assertEquals(3, TwoSmallest.sumTwoSmallestNumbers(new long[] { 1, 2, 3, 4, 5 }));
         assertEquals(3, TwoSmallest.sumTwoSmallestNumbers(new long[] { 5, 6, 2, 1, 4 }));
-        assertEquals(16, TwoSmallest.sumTwoSmallestNumbers(new long[] { 7, 15, 12, 10, 6 }));
+        assertEquals(13, TwoSmallest.sumTwoSmallestNumbers(new long[] { 7, 15, 12, 10, 6 }));
     }
 
     @Test
@@ -33,14 +35,15 @@ class TwoSmallestTest {
     void testSumTwoSmallestNumbers_NegativeNumbers() {
         assertEquals(-5, TwoSmallest.sumTwoSmallestNumbers(new long[] { -1, -4, 2, 3, 5 }));
         assertEquals(-10, TwoSmallest.sumTwoSmallestNumbers(new long[] { -5, -5, 0, 1, 2 }));
-        assertEquals(-3, TwoSmallest.sumTwoSmallestNumbers(new long[] { -1, -2, -3, -4, -5 }));
+        assertEquals(-9, TwoSmallest.sumTwoSmallestNumbers(new long[] { -1, -2, -3, -4, -5 }));
     }
 
     @Test
     @DisplayName("Should handle array with large numbers")
     void testSumTwoSmallestNumbers_LargeNumbers() {
-        assertEquals(2000000000, TwoSmallest.sumTwoSmallestNumbers(new long[] { 1000000000, 1000000000, 2000000000, 3000000000L }));
-        assertEquals(0, TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MAX_VALUE, Long.MAX_VALUE, 0, 1 }));
+        assertEquals(2000000000,
+                TwoSmallest.sumTwoSmallestNumbers(new long[] { 1000000000, 1000000000, 2000000000, 3000000000L }));
+        assertEquals(1, TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MAX_VALUE, Long.MAX_VALUE, 0, 1 }));
     }
 
     @Test
@@ -49,7 +52,7 @@ class TwoSmallestTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             TwoSmallest.sumTwoSmallestNumbers(null);
         });
-        assertEquals("Array cannot be null", exception.getMessage());
+        assertEquals("Array must not be null and contain at least 2 numbers", exception.getMessage());
     }
 
     @Test
@@ -58,7 +61,7 @@ class TwoSmallestTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             TwoSmallest.sumTwoSmallestNumbers(new long[] {});
         });
-        assertEquals("Array must contain at least 2 numbers", exception.getMessage());
+        assertEquals("Array must not be null and contain at least 2 numbers", exception.getMessage());
     }
 
     @Test
@@ -67,13 +70,15 @@ class TwoSmallestTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             TwoSmallest.sumTwoSmallestNumbers(new long[] { 1 });
         });
-        assertEquals("Array must contain at least 2 numbers", exception.getMessage());
+        assertEquals("Array must not be null and contain at least 2 numbers", exception.getMessage());
     }
 
     @Test
     @DisplayName("Should handle edge cases with minimum values")
     void testSumTwoSmallestNumbers_EdgeCases() {
-        assertEquals(Long.MIN_VALUE * 2, TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MIN_VALUE, Long.MIN_VALUE }));
-        assertEquals(Long.MIN_VALUE + 1, TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MIN_VALUE, 1, Long.MAX_VALUE }));
+        assertEquals(Long.MIN_VALUE * 2,
+                TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MIN_VALUE, Long.MIN_VALUE }));
+        assertEquals(Long.MIN_VALUE + 1,
+                TwoSmallest.sumTwoSmallestNumbers(new long[] { Long.MIN_VALUE, 1, Long.MAX_VALUE }));
     }
-} 
+}

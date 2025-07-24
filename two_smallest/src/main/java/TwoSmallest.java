@@ -11,5 +11,6 @@ class TwoSmallest {
         // Return the sum of the two smallest numbers in the given array.
         // TODO: What if the array is null?
         // TODO: What if there aren't enough numbers in the array?
+        return 0;
     }
 }
